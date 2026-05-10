@@ -204,15 +204,7 @@ module.exports = class financeiroController {
           SELECT *
           FROM financa
           WHERE fk_id_usuario = ?
-          ORDER BY 
-            CASE 
-              WHEN frequencia = 'Unica' THEN 1
-              WHEN frequencia = 'Diaria' THEN 2
-              WHEN frequencia = 'Semanal' THEN 3
-              WHEN frequencia = 'Mensal' THEN 4
-              WHEN frequencia = 'Anual' THEN 5
-              ELSE 6
-            END
+          ORDER BY data DESC
         `,
         [fk_id_usuario]
       );
@@ -224,7 +216,7 @@ module.exports = class financeiroController {
       const transacoesFinal = [];
 
       transacoes.forEach((transacao) => {
-        const dataInicio = moment(transacao.data_inicio); // Supondo que a coluna data_inicio exista
+        const dataInicio = moment(transacao.data_inicio);
         const dataAtual = moment();
 
         // Para transações que só devem ocorrer futuramente
@@ -271,7 +263,7 @@ module.exports = class financeiroController {
 
         transacoesFinal.push({
           ...transacao,
-          data_gerada: proximaDataTransacao.format('YYYY-MM-DD'),
+          data: moment(transacao.data).format('YYYY-MM-DD'),
         });
       });
 
