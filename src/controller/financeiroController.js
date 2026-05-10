@@ -269,13 +269,10 @@ module.exports = class financeiroController {
           proximaDataTransacao = dataInicio;
         }
 
-        // Verifica se a próxima transação deve ocorrer hoje
-        if (dataAtual.isSame(proximaDataTransacao, 'day')) {
-          transacoesFinal.push({
-            ...transacao,
-            data_gerada: dataAtual.format('YYYY-MM-DD'),
-          });
-        }
+        transacoesFinal.push({
+          ...transacao,
+          data_gerada: proximaDataTransacao.format('YYYY-MM-DD'),
+        });
       });
 
       return res.status(200).json({ transacoes: transacoesFinal });

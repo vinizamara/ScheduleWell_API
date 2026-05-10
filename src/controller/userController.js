@@ -24,7 +24,7 @@ module.exports = class UserController {
         // Verifica o formato do email
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
-            return res.status(400).json({ error: 'Formato de email inválido' });
+            return res.status(400).json({ error: 'Formato de email inválido, Digite um email válido. Exemplo: usuario@gmail.com ' });
         }
 
         // Valida a força da senha
@@ -94,7 +94,7 @@ module.exports = class UserController {
                 // Verifica o formato do email
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailRegex.test(email)) {
-                    return res.status(400).json({ error: 'Formato de email inválido' });
+                    return res.status(400).json({ error: 'Formato de email inválido, Digite um email válido. Exemplo: usuario@gmail.com ' });
                 }
                 else{
                     updates.push('email = ?'); // Atualiza o email se não houver conflito
@@ -171,7 +171,7 @@ module.exports = class UserController {
 
             // Verifica se o usuário foi encontrado
             if (results.length === 0) {
-                return res.status(401).json({ error: 'Credenciais inválidas' });
+                return res.status(401).json({ error: 'Email ou senha incorretos' });
             }
 
             const user = results[0];
@@ -180,7 +180,7 @@ module.exports = class UserController {
             const isPasswordValid = await bcrypt.compare(senha, user.senha);
 
             if (!isPasswordValid) {
-                return res.status(401).json({ error: 'Credenciais inválidas' });
+                return res.status(401).json({ error: 'Email ou senha incorretos' });
             }
 
             // Login bem-sucedido
