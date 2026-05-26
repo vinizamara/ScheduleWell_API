@@ -56,7 +56,7 @@ O projeto organiza controllers, rotas e conexão com banco de dados em estrutura
 
 A comunicação com o banco de dados é realizada por meio de consultas SQL utilizando MySQL, permitindo o gerenciamento de usuários, anotações, listas e transações financeiras.
 
-### Estrutura de pastas 📁
+### Estrutura de pastas 
 
 - **mysql-init/** – scripts SQL utilizados para inicialização automática do banco de dados no Docker
 - **src/controller/** – controllers responsáveis pelas regras de negócio e processamento das requisições
@@ -64,7 +64,7 @@ A comunicação com o banco de dados é realizada por meio de consultas SQL util
 - **src/routes/** – definição e organização das rotas da API
 - **src/server.js** – inicialização do servidor Express e configuração da aplicação
 
-### Arquivos principais 📌
+### Arquivos principais 
 
 - **src/server.js** – ponto de entrada da aplicação
 - **src/routes/apiRoutes.js** – centralização das rotas da API
@@ -81,7 +81,7 @@ O banco é responsável pelo armazenamento e gerenciamento das informações da 
 
 A estrutura foi organizada com relacionamentos entre tabelas utilizando chaves estrangeiras e regras de integridade referencial com `ON DELETE CASCADE`.
 
-### Estrutura principal 📁
+### Estrutura principal 
 
 - **usuario** – armazenamento de dados dos usuários da aplicação
 - **financa** – registro de receitas, despesas, valores e frequência de transações
@@ -127,7 +127,7 @@ A estrutura Docker é composta por containers separados para a API e para o banc
 
 O projeto também utiliza Docker Compose para gerenciamento e orquestração dos containers.
 
-### Arquivos Docker 📦
+### Arquivos Docker 
 
 - **docker-compose.yml** – ambiente completo de desenvolvimento com API e banco de dados
 - **docker-compose.db.yml** – execução isolada do banco de dados MySQL
